@@ -117,5 +117,19 @@
     ]
   },
 
-  # ADD POKEMON STUFF HERE
+  "PokeAttributes": {
+    "type1": [
+      "Grass", "Fire", "Water", "Bug", "Normal", "Poison", "Electric", "Ground", "Fairy",
+      "Fighting", "Psychic", "Rock", "Ghost", "Ice", "Dragon", "Dark", "Steel", "Flying"
+    ],
+    "type2": [
+      "Grass", "Fire", "Water", "Bug", "Normal", "Poison", "Electric", "Ground", "Fairy",
+      "Fighting", "Psychic", "Rock", "Ghost", "Ice", "Dragon", "Dark", "Steel", "Flying",
+      ""
+    ],
+    "legendary": [
+      "True", "False"
+    ]
+
+  }
 }
