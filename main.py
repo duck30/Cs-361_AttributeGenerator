@@ -1,7 +1,17 @@
 import json
 import random
 
+def gen_rand_from_list(att_list: list):
+    """
+    Generates a random value from an input list.
+    """
+    return random.choice(att_list)
 
+def gen_rand_from_range(min_: int, max_: int) -> int:
+    """
+    Generates a random value from input range, inclusive.
+    """
+    return random.randint(min_, max_)
 
 def main():
     """
@@ -10,7 +20,7 @@ def main():
     #-----------------------
     # Import JSON file with attributes
     #-----------------------
-    attribute_file = 'attributes.json'
+    attribute_file = 'resources/attributes/attributes.json'
 
     try:
         with open(attribute_file, 'r') as att_file:
@@ -21,15 +31,10 @@ def main():
     except json.JSONDecodeError:
         print("Error: Failed to decode JSON from the file (invalid JSON format).")
 
-    ##################################################################################
-    # 'attributes' is the whole attribute dictionary imported from the file
-    #
-    # attributes["PokeAttributes"] will give you the pokemon attribute dictionary
-    # by itself. then you can treat it like any other python library.
-    #################################################################################
+
     #create shallow copy of "PokeAttributes"
     att = attributes["PokeAttributes"]
-    # 18 (0-17) atrributes for type1
+    # 18 (0-17) attributes for type1
     type1_attribute = att["type1"][random.randint(0, 17)]
     # 19 (0-18) for type2
     type2_attribute = att["type2"][random.randint(0, 18)]
