@@ -5,6 +5,7 @@ import shutil
 import time
 import signal
 import threading
+import os
 
 # create a threading event, will help with microservice shutdown
 shutdown_event = threading.Event()
