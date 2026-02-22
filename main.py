@@ -32,14 +32,34 @@ def main():
         print("Error: Failed to decode JSON from the file (invalid JSON format).")
 
 
-    #create shallow copy of "PokeAttributes"
+    # create shallow copy of "PokeAttributes"
     att = attributes["PokeAttributes"]
     # 18 (0-17) attributes for type1
-    type1_attribute = att["type1"][random.randint(0, 17)]
+    type1_attribute = gen_rand_from_list(att["type1"])
     # 19 (0-18) for type2
-    type2_attribute = att["type2"][random.randint(0, 18)]
+    type2_attribute = gen_rand_from_list(att["type2"])
+    if type2_attribute == type1_attribute:
+        type2_attribute = gen_rand_from_list(att["type2"])
     # 2  (0-1)for legendary
-    legendary_attribute = att["legendary"][random.randint(0, 1)]
+    legendary_attribute = gen_rand_from_list(att["legendary"])
+    
+    response = {
+        "Category": "Pokemon",
+        "Attributes": {
+        "type1": type1_attribute,
+        "type2": type2_attribute,
+        "legendary": legendary_attribute
+        }}
+     
+    file_name = 'response_file.json'
+    try:
+        with open(file_name, 'w') as response_file:
+            msg_error = json.dump(response, response_file, indent=4, ensure_ascii=False)
+    # ****** currently printing error messages - can make helpful return if/when needed *******
+    except FileNotFoundError:
+        print(f"Error: The file {msg_error} was not found.")
+    except json.JSONDecodeError:
+        print("Error: Failed to decode JSON from the file (invalid JSON format).")
 
 
 
