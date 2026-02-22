@@ -159,9 +159,12 @@ def main():
         # Save the output into a new JSON file in /integration/responses/outbox
         # -----------------------
         path_name = f'integration/responses/outbox/{output_dict["ID_Num"]}_output.json'
+        tmp_path = path_name + ".tmp"
 
-        with open(path_name, 'w') as out_file:
+        with open(tmp_path, 'w') as out_file:
             json.dump(output_dict, out_file, indent=4)
+
+        os.replace(tmp_path, path_name)
 
         # -----------------------
         # Move the request file to "done" folder
